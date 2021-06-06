@@ -26,6 +26,37 @@ class _MainScreenState extends State<MainScreen> {
       appBar: AppBar(
         title: Text('Main screen'),
       ),
+      drawer: Container(
+        color: Colors.white,
+        width: 255.0,
+        child: Drawer(
+          child: ListView(
+            children: [
+              // drawer header
+              Container(
+                height: 165.0,
+                child: DrawerHeader(
+                  decoration: BoxDecoration(color: Colors.white),
+                  child: Row(
+                    children: [
+                      Image.asset("images/user_icon.png", height: 65.0, width: 65.0,),
+                      SizedBox(width: 16.0,),
+                      Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('Profile Name', style: TextStyle(fontSize: 16.0, fontFamily: "Brand-Bold"),),
+                          SizedBox(height: 6.0),
+                          Text('Visit Profile'),
+                        ],
+                      )
+                    ]
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
       body: Stack(
         children: [
           GoogleMap(
@@ -63,8 +94,8 @@ class _MainScreenState extends State<MainScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                     SizedBox(height: 6.0),
-                    Text('Hi there, ', style: TextStyle(fontSize: 15.0),),
-                    Text('Where to?, "', style: TextStyle(fontSize: 20.0, fontFamily: "Brand-Bold"),),
+                    Text('Hi there, ', style: TextStyle(fontSize: 15.0, fontFamily: "Brand-Bold"),),
+                    Text('Where to? ', style: TextStyle(fontSize: 20.0, fontFamily: "Brand-Bold"),),
                     SizedBox(height: 20.0),
                       Container(
                         decoration: BoxDecoration(
@@ -116,7 +147,7 @@ class _MainScreenState extends State<MainScreen> {
                           SizedBox(width: 12.0,),
                           Column(
                             children: [
-                              Text('Add Home'),
+                              Text('Add Work'),
                               SizedBox(height: 4.0,),
                               Text('Your office address', style: TextStyle(color: Colors.black54, fontSize: 12.0,),)
                             ],

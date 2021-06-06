@@ -30,7 +30,6 @@ class ProgressDialog extends StatelessWidget {
             ],
           ),
         )
-
       ),
     );
   }
