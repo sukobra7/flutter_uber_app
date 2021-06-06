@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>86144839470-uv28iheitpmfn2l6hvpg297te45onoq6.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.86144839470-uv28iheitpmfn2l6hvpg297te45onoq6</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCm5xG0zn74iTCLiczXCSwn2V2wBQxkcAk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>86144839470</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>net.nakamura.flutteruberapp</string>
+	<key>PROJECT_ID</key>
+	<string>flutter-uber-clone-16a19</string>
+	<key>STORAGE_BUCKET</key>
+	<string>flutter-uber-clone-16a19.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:86144839470:ios:31354a3e9f03e94bc694bf</string>
+	<key>DATABASE_URL</key>
+	<string>https://flutter-uber-clone-16a19-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>
