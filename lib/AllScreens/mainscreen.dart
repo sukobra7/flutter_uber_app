@@ -42,17 +42,36 @@ class _MainScreenState extends State<MainScreen> {
                       Image.asset("images/user_icon.png", height: 65.0, width: 65.0,),
                       SizedBox(width: 16.0,),
                       Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text('Profile Name', style: TextStyle(fontSize: 16.0, fontFamily: "Brand-Bold"),),
                           SizedBox(height: 6.0),
                           Text('Visit Profile'),
+
                         ],
                       )
                     ]
                   ),
                 ),
-              )
+              ),
+
+              DividerWidget(),
+
+              SizedBox(height: 12.0),
+
+              // drawer body contolllers
+              ListTile(
+                leading: Icon(Icons.history),
+                title: Text("History", style: TextStyle(fontSize: 15.0)),
+              ),
+              ListTile(
+                leading: Icon(Icons.person),
+                title: Text("Visit Profile", style: TextStyle(fontSize: 15.0)),
+              ),
+              ListTile(
+                leading: Icon(Icons.info),
+                title: Text("About", style: TextStyle(fontSize: 15.0)),
+              ),
             ],
           ),
         ),
@@ -68,6 +87,41 @@ class _MainScreenState extends State<MainScreen> {
                 _controllerGoogleMap.complete(controller);
                 newGoogleMapController = controller;
               }),
+
+          // HamburgerButton
+          Positioned(
+            top: 45.0,
+            left: 22.0,
+            child: GestureDetector(
+              onTap: () {
+
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(22.0),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black,
+                      blurRadius: 6.0,
+                      spreadRadius: 0.5,
+                      offset: Offset(
+                        0.7,
+                        0.7,
+                      ),
+                    ),
+                  ],
+                ),
+                child: CircleAvatar(
+                  backgroundColor: Colors.white,
+                  child: Icon(Icons.menu, color: Colors.black,),
+                  radius: 20.0,
+
+                ),
+              ),
+            ),
+          ),
+
           Positioned(
               right: 0.0,
               left: 0.0,
