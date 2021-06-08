@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_uber_app/AllWidgets/Divider.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MainScreen extends StatefulWidget {
@@ -14,6 +15,23 @@ class _MainScreenState extends State<MainScreen> {
   Completer<GoogleMapController> _controllerGoogleMap = Completer();
   GoogleMapController newGoogleMapController;
 
+  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+
+  Position currentPosition;
+  var geoLocator = Geolocator();
+  double bottomPaddingofMao = 0;
+
+  void locatePosition() async {
+    Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    currentPosition = position;
+
+    // 緯度, 経度
+    LatLng latLatPosition = LatLng(position.latitude, position.longitude);
+    
+    CameraPosition cameraPosition = new CameraPosition(target: latLatPosition, zoom: 14);
+    newGoogleMapController.animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
+  }
+
   // カメラの位置 初期値設定
   static final CameraPosition _kGooglePlex = CameraPosition(
     target: LatLng(37.42796133580664, -122.085749655962),
@@ -23,6 +41,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
       appBar: AppBar(
         title: Text('Main screen'),
       ),
@@ -82,19 +101,26 @@ class _MainScreenState extends State<MainScreen> {
               mapType: MapType.normal,
               myLocationButtonEnabled: true,
               initialCameraPosition: _kGooglePlex,
+              myLocationEnabled: true,
+              zoomGesturesEnabled: true,
+              zoomControlsEnabled: true,
+
               // onMapCreatedコールバック時にGoogleMapControllerを使って地図を制御
               onMapCreated: (GoogleMapController controller) {
                 _controllerGoogleMap.complete(controller);
                 newGoogleMapController = controller;
+
+                locatePosition();
               }),
 
           // HamburgerButton
+
           Positioned(
             top: 45.0,
             left: 22.0,
             child: GestureDetector(
               onTap: () {
-
+                scaffoldKey.currentState.openDrawer();
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -127,7 +153,7 @@ class _MainScreenState extends State<MainScreen> {
               left: 0.0,
               bottom: 0.0,
               child: Container(
-                height: 320.0,
+                height: 300.0,
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
@@ -218,3 +244,4 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 }
+
