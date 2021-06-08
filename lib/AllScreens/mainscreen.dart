@@ -19,7 +19,7 @@ class _MainScreenState extends State<MainScreen> {
 
   Position currentPosition;
   var geoLocator = Geolocator();
-  double bottomPaddingofMao = 0;
+  double bottomPaddingOfMap = 0;
 
   void locatePosition() async {
     Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
@@ -98,6 +98,7 @@ class _MainScreenState extends State<MainScreen> {
       body: Stack(
         children: [
           GoogleMap(
+              padding: EdgeInsets.only(bottom: bottomPaddingOfMap),
               mapType: MapType.normal,
               myLocationButtonEnabled: true,
               initialCameraPosition: _kGooglePlex,
@@ -109,6 +110,10 @@ class _MainScreenState extends State<MainScreen> {
               onMapCreated: (GoogleMapController controller) {
                 _controllerGoogleMap.complete(controller);
                 newGoogleMapController = controller;
+
+                setState(() {
+                  bottomPaddingOfMap = 300.0;
+                });
 
                 locatePosition();
               }),
