@@ -21,6 +21,7 @@ class _MainScreenState extends State<MainScreen> {
   var geoLocator = Geolocator();
   double bottomPaddingOfMap = 0;
 
+  // current position 現在位置
   void locatePosition() async {
     Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
     currentPosition = position;
